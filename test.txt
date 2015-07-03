@@ -1,3 +1,12 @@
 abcd
-asdf
-asdfasdfa
+<<<<<<< HEAD
+=======
+asdfaafafasfas
+fas
+dfa
+sdfa
+f
+asd
+fasdaasdfasdf
+asf
+>>>>>>> origin/master
