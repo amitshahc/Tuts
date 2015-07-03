@@ -1,6 +1,4 @@
 abcd
-<<<<<<< HEAD
-=======
 asdfaafafasfas
 fas
 dfa
@@ -9,4 +7,3 @@ f
 asd
 fasdaasdfasdf
 asf
->>>>>>> origin/master
