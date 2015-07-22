@@ -1,0 +1,54 @@
+<script>
+//Detect Browser
+var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
+var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+    // At least Safari 3+: "[object HTMLElementConstructor]"
+var isChrome = !!window.chrome && !isOpera;              // Chrome 1+
+var isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6
+var Host = window.location.host;
+
+
+//Clear Basic Realm Authentication
+if(isIE){
+//IE
+	document.execCommand("ClearAuthenticationCache");
+	window.location = '/';
+}
+else if(isSafari)
+{//Safari. but this works mostly on all browser except chrome
+	(function(safeLocation){
+		var outcome, u, m = "You should be logged out now.";
+		// IE has a simple solution for it - API:
+		try { outcome = document.execCommand("ClearAuthenticationCache") }catch(e){}
+		// Other browsers need a larger solution - AJAX call with special user name - 'logout'.
+		if (!outcome) {
+			// Let's create an xmlhttp object
+			outcome = (function(x){
+				if (x) {
+					// the reason we use "random" value for password is 
+					// that browsers cache requests. changing
+					// password effectively behaves like cache-busing.
+					x.open("HEAD", safeLocation || location.href, true, "logout", (new Date()).getTime().toString())
+					x.send("");
+					// x.abort()
+					return 1 // this is **speculative** "We are done." 
+				} else {
+					return
+				}
+			})(window.XMLHttpRequest ? new window.XMLHttpRequest() : ( window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : u ))	
+		}
+		if (!outcome) {
+			m = "Your browser is too old or too weird to support log out functionality. Close all windows and restart the browser."
+		}
+		alert(m);
+		window.location = '/';
+		// return !!outcome
+	})(/*if present URI does not return 200 OK for GET, set some other 200 OK location here*/)
+}
+else{
+//Firefox,Chrome
+	window.location = 'http://log:out@'+Host+'/';
+}
+</script>
