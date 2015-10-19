@@ -1,3 +1,5 @@
+//Some of all Prime number below 2 million
+
 <?php
 set_time_limit(3600);
 ini_set('memory_limit', '100M');
