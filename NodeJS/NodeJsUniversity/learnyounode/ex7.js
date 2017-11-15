@@ -95,3 +95,6 @@ if (url) {
         console.error("Error:", e.message);
     }
 }
+
+
+//Release 2.0
