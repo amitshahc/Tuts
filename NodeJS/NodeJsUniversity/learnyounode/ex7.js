@@ -78,18 +78,11 @@ if (url) {
             var rawData = '';
 
             res.on('data', (chunk) => {
-                console.log(chunk);
-                //rawData += chunk + "\n";
-                //console.log("chunk:", chunk);
+                console.log(chunk);                
             });
 
             res.on('error', console.error);
-
-            /*res.on('end', () => {
-                console.log(rawData);
-                //let parsedData = JSON.parse(rawData);
-                //console.log(parsedData);
-            });*/
+                        
         })
     } catch (e) {
         console.error("Error:", e.message);
