@@ -1,0 +1,11 @@
+[
+  "MONGOD",
+  "CONNECT",
+  "FIND",
+  "FIND PROJECT",
+  "INSERT",
+  "UPDATE",
+  "REMOVE",
+  "COUNT",
+  "AGGREGATE"
+]
